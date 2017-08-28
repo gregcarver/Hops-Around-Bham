@@ -18,8 +18,8 @@ ROUTER
     let body = req.body;
 
     req.yelpClient.search({
-      term: body.term,
-      location: body.location
+      term: bar,
+      location: "birmingham"
     }).then(response => {
       res.send(response.jsonBody);
     })

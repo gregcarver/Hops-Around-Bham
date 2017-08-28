@@ -30,8 +30,8 @@ app.controller("BarGet",['$scope', '$http','$location',function($scope,$http,$lo
 
         console.log('bars load')
         $http({
-            method : 'GET',
-            url : yelp,
+            method : 'POST',
+            url : "http://localhost3000/api/yelp",
             headers: {
                 'Authorization' : 'Bearer 3JIWB8IUDpuwym5MW0ezva3XuN2-a5aPMe6wTytPF4-TCQ3UhkCmcCwGjSQa4Vo1WYUbMoGMm0iqF_VgYMlDMaBJCR4GjaAhjJ4cQ_7ysvasl5Ho_VGJw7UZbVqcWXYx',
                 'location' : 'birmingham',
@@ -56,15 +56,7 @@ app.controller("BarGet",['$scope', '$http','$location',function($scope,$http,$lo
 
 
  
-// app.controller("BarCategory",['$scope', '$routeParams', '$http', function($scope, $routeParams, $http){
-//     console.log($routeParams)
-//      var category=$routeParams.categories;
-//     $http.get(yelp+ category)
-//         .then(function(response){
-//         console.log(response)
-//         $scope.bars=response.data
-//     });
-// }]);
+
 
 
 

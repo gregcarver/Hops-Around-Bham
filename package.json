@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "less": "^2.7.2",
     "node_module": "0.0.0"
   }
 }

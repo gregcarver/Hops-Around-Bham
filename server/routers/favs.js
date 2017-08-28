@@ -1,4 +1,5 @@
 'use strict';
+var fs = require('fs');
 const ROUTER = require('express').Router();
 var path = require('path');
 const jsonPath = path.join(__dirname, '..', 'data.json');

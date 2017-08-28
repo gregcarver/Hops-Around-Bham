@@ -15,10 +15,11 @@ ROUTER
   })
   .post("/",function(req,res){
     console.log(req.yelpClient);
+    
     let body = req.body;
-
+    console.log(body)
     req.yelpClient.search({
-      term: bar,
+      term: body.bar,
       location: "birmingham"
     }).then(response => {
       res.send(response.jsonBody);

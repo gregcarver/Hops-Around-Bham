@@ -31,7 +31,7 @@ app.controller("BarGet",['$scope', '$http','$location',function($scope,$http,$lo
         console.log('bars load')
         $http({
             method : 'POST',
-            url : "http://localhost3000/api/yelp",
+            url : "http://localhost:3000/api/yelp",
             headers: {
                 'Authorization' : 'Bearer 3JIWB8IUDpuwym5MW0ezva3XuN2-a5aPMe6wTytPF4-TCQ3UhkCmcCwGjSQa4Vo1WYUbMoGMm0iqF_VgYMlDMaBJCR4GjaAhjJ4cQ_7ysvasl5Ho_VGJw7UZbVqcWXYx',
                 'location' : 'birmingham',

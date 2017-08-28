@@ -16,7 +16,7 @@ app.config(function($routeProvider,$httpProvider){
     .when('/category/cocktail',{
         templateUrl: "../views/cocktail.html"
     })
-    .when('/category'+id,{
+    .when('/single',{
         templateUrl: "../views/single.html"
     })   
 });

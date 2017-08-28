@@ -1,3 +1,4 @@
+@import url(https://fonts.googleapis.com/css?family=Archivo+Narrow);
 #map {
   background-color: pink;
 }
@@ -6,4 +7,95 @@
   background-size: cover;
   width: 400px;
   height: 400px;
+}
+body {
+  background-color: #1d2229;
+  background-image: url("https://dl.dropboxusercontent.com/u/66815585/Images/noisy_net.png");
+  font-family: 'Archivo Narrow', sans-serif;
+  font-size: 1em;
+}
+a {
+  -webkit-transition: all 0.2s ease-in;
+  -moz-transition: all 0.2s ease-in;
+  -o-transition: all 0.2s ease-in;
+  transition: all 0.2s ease-in;
+}
+a:hover {
+  -webkit-transition: all 0.2s ease-out;
+  -moz-transition: all 0.2s ease-out;
+  -o-transition: all 0.2s ease-out;
+  transition: all 0.2s ease-out;
+}
+ul {
+  display: block;
+  position: relative;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+ul li {
+  float: left;
+  width: 20%;
+}
+ul li a {
+  display: block;
+  font-size: 1.75em;
+  line-height: 3em;
+  text-align: center;
+  text-decoration: none;
+  color: #f1f1f1;
+}
+ul li a:hover {
+  background-color: #f1f1f1;
+  color: #333333;
+  text-decoration: underline;
+}
+ul li .ocean {
+  border-bottom: 4px solid #114477;
+}
+ul li .ocean:hover {
+  background-color: #114477;
+  color: #ababab;
+}
+ul li .sea {
+  border-bottom: 4px solid #336699;
+}
+ul li .sea:hover {
+  background-color: #336699;
+}
+ul li .reef {
+  border-bottom: 4px solid #658B9E;
+}
+ul li .reef:hover {
+  background-color: #658B9E;
+}
+ul li .beach {
+  border-bottom: 4px solid #C9D4A7;
+}
+ul li .beach:hover {
+  background-color: #C9D4A7;
+}
+ul li .dune {
+  border-bottom: 4px solid #FBF9AC;
+}
+ul li .dune:hover {
+  background-color: #FBF9AC;
+}
+@media screen and (min-width: 0px) and (max-width: 479px) {
+  ul li {
+    font-size: 0.8em;
+    float: none;
+    width: auto;
+  }
+}
+@media screen and (min-width: 480px) and (max-width: 767px) {
+  ul li {
+    font-size: 0.9em;
+    width: 50%;
+  }
+  ul li:first-child {
+    width: 100%;
+  }
+}
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+  font-size: 1.2em;
 }

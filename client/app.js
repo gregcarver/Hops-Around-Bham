@@ -39,8 +39,8 @@ app.controller("BarGet",['$scope', '$http','$location',function($scope,$http,$lo
             }
         })
             .then(function(response){
-                console.log(response.data)
-                $scope.bars=response.data         
+                console.log(response.data.businesses)
+                $scope.bars=response.data.businesses
     });
 
 }])

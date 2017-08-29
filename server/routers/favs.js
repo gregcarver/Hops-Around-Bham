@@ -3,6 +3,7 @@ var fs = require('fs');
 const ROUTER = require('express').Router();
 var path = require('path');
 const jsonPath = path.join(__dirname, '..', 'data.json');
+var usersHandler = require('./users.proc');
 
 ROUTER
   .get('/', function(req, res) {
@@ -28,5 +29,26 @@ ROUTER
                 }
             });
         });
-    });
+    })
+    .get('/user', function(req, res){
+        console.log('inside get all users');
+        usersHandler.all()
+            .then(function (success){
+                res.send(success);
+            }, function(err){
+                console.log(err);
+                res.sendStatus(500);
+            });
+    })
+    .get('/user/:user', function(req, res){
+        console.log('get single user info');
+        usersHandler.oneUser(req.params.user)
+            .then(function(success){
+                res.send(success);
+            }, function(err){
+                console.log(err);
+                res.sendStatus(500);
+            })
+    })
+
 module.exports = ROUTER;

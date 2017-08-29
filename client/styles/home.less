@@ -1,73 +1,19 @@
-
-@import url(https://fonts.googleapis.com/css?family=Archivo+Narrow);
-
-body{
-  background-color:#1d2229;
-  background-image: url("https://dl.dropboxusercontent.com/u/66815585/Images/noisy_net.png");
-  font-family: 'Archivo Narrow', sans-serif;
-  font-size:1em;
+body {
+  background: url('http://www.menshealth.com/sites/menshealth.com/files/beer-main_0.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
 }
-a{ -webkit-transition: all .2s ease-in; -moz-transition: all .2s ease-in; -o-transition: all .2s ease-in; transition: all .2s ease-in; }
-a:hover{ -webkit-transition: all .2s ease-out; -moz-transition: all .2s ease-out; -o-transition: all .2s ease-out; transition: all .2s ease-out; }
 
+//Button
+.btn-info {
+    color: #fff;
+    background-color: #514E47;
+    border-color: #514E47;
+}
 
-ul{
-  display:block;
-  position: relative;
-  max-width: 1280px;
-  margin:0 auto;
-  
-  li{
-    float: left;
-    width:20%;
-    
-    a{
-      display: block;
-      font-size: 1.75em;
-      line-height: 3em;
-      text-align: center;
-      text-decoration:none;
-      color:#f1f1f1;
-      &:hover{
-          background-color: #f1f1f1;
-          color:#333333;
-          text-decoration:underline;
-      }
-    }
-    .ocean{
-      border-bottom:4px solid #114477;
-      &:hover{background-color: #114477;color:#ababab;}
-    }
-    .sea{
-      border-bottom:4px solid #336699;
-      &:hover{background-color: #336699;}
-    }
-    .reef{
-      border-bottom:4px solid #658B9E;
-      &:hover{background-color: #658B9E;}
-    }
-    .beach{
-      border-bottom:4px solid #C9D4A7;
-      &:hover{background-color: #C9D4A7;}
-    }
-    .dune{
-      border-bottom:4px solid #FBF9AC;
-      &:hover{background-color: #FBF9AC;}
-    }
-  }
+//Title
+.home-title {
+    font-size: 4em;
+    color: white;
 }
-@media screen and (min-width: 0px) and (max-width: 479px) {
-  ul li{
-    font-size:0.8em;
-    float:none;
-    width:auto;
-  }
-}
-@media screen and (min-width: 480px) and (max-width: 767px) {
-  ul li{
-    font-size:0.9em;
-    width:50%;
-    &:first-child{width:100%;}
-  }
-}
-@media screen and (min-width: 768px) and (max-width: 1024px) {font-size:1.2em;}
+

@@ -1,8 +1,8 @@
 var app = angular.module('app.controllers', ['ngRoute']);
 
 //get list of bars controller
-app.controller("BarGet",['$scope', '$http','$location',function($scope,$http,$location,$httpProvider){
-
+app.controller("BarGet",['$scope', '$http','$location','$routeParams',function($scope,$http,$location,$routeParams){
+        var category = $routeParams.categories
         console.log('bars load')
         $http({
             method : 'POST',

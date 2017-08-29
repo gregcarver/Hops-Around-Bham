@@ -14,15 +14,18 @@ ROUTER
     next();
   })
   .post("/",function(req,res){
-    console.log(req.yelpClient);
+  //  console.log(req.yelpClient);
     
     let body = req.body;
-    console.log(body)
+    var category = 
+    
     req.yelpClient.search({
-      term: "bar",
-      location: "birmingham"
+      term: category,
+      location: "birmingham",
+      
     }).then(response => {
       res.send(response.jsonBody);
+      console.log(category)
     })
   })
 module.exports = ROUTER;

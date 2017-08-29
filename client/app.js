@@ -1,7 +1,7 @@
 var yelp = "https://api.yelp.com/v3/businesses/search?location=birmingham&term=bar&Authorization=Bearer 3JIWB8IUDpuwym5MW0ezva3XuN2-a5aPMe6wTytPF4-TCQ3UhkCmcCwGjSQa4Vo1WYUbMoGMm0iqF_VgYMlDMaBJCR4GjaAhjJ4cQ_7ysvasl5Ho_VGJw7UZbVqcWXYx"
 
 
-var app = angular.module('app',["ngRoute"]);
+var app = angular.module('app',['ngRoute', 'app.controllers']);
 app.config(function($routeProvider,$httpProvider){
     $routeProvider
     .when('/',{
@@ -12,7 +12,7 @@ app.config(function($routeProvider,$httpProvider){
     })
     .when('/category/brewery',{
     templateUrl: "../views/brewery.html"
-})
+    })
     .when('/category/cocktail',{
         templateUrl: "../views/cocktail.html"
     })
@@ -20,30 +20,9 @@ app.config(function($routeProvider,$httpProvider){
         templateUrl: "../views/single.html"
     })   
 });
-app.run(function($http){
-     $http.defaults.headers.common['Access-Control-Allow-Origin'] = "*";
-     $http.defaults.headers.common['Access-Control-Allow-Methods'] = "GET, POST,OPTIONS";
-     $http.defaults.headers.common['Access-Control-Allow-Headers'] = "Authorization";
-})
 
-app.controller("BarGet",['$scope', '$http','$location',function($scope,$http,$location,$httpProvider){
 
-        console.log('bars load')
-        $http({
-            method : 'POST',
-            url : "http://localhost:3000/api/yelp",
-            headers: {
-                'Authorization' : 'Bearer 3JIWB8IUDpuwym5MW0ezva3XuN2-a5aPMe6wTytPF4-TCQ3UhkCmcCwGjSQa4Vo1WYUbMoGMm0iqF_VgYMlDMaBJCR4GjaAhjJ4cQ_7ysvasl5Ho_VGJw7UZbVqcWXYx',
-                'location' : 'birmingham',
-                'term' : 'bar'
-            }
-        })
-            .then(function(response){
-                console.log(response.data.businesses)
-                $scope.bars=response.data.businesses
-    });
 
-}])
 
 
 

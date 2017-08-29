@@ -1,4 +1,4 @@
-var app = angular.module('app.controllers', []);
+var app = angular.module('app.controllers', ['ngRoute']);
 
 //get list of bars controller
 app.controller("BarGet",['$scope', '$http','$location',function($scope,$http,$location,$httpProvider){
@@ -21,9 +21,12 @@ app.controller("BarGet",['$scope', '$http','$location',function($scope,$http,$lo
 }])
 
 //User Page controller
-app.controller('oneUserPage', ['$scope', '$http', '$location', '$rootScope', function($scope, $http, $location, $rootScope){
+app.controller('oneUserPage', ['$scope', '$http', '$location', '$rootScope', '$routeParams', function($scope, $http, $location, $rootScope, $routeParams){
     console.log('A user page');
-    $http.get($rootScope.userUrl)
+    console.log($routeParams);
+    var id = $routeParams.user;
+ 
+    $http.get('http://localhost:3000/api/favs/user/' +id)
     .then(function(response){
         console.log(response);
     })

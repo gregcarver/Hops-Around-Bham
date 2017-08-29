@@ -30,4 +30,19 @@ app.controller('oneUserPage', ['$scope', '$http', '$location', '$rootScope', '$r
     .then(function(response){
         console.log(response);
     })
+
+    $http.get('http://localhost:3000/api/favs/user')
+    .then(function(response){
+        console.log(response);
+        response.data.forEach(function(element){
+            if(element.id == id){
+               $scope.User = element.username;
+               console.log($scope.User);
+               return $scope.User;
+            }else{
+                console.log('no user found');
+            }
+        })
+        console.log($scope.User);
+    })
 }])

@@ -18,8 +18,15 @@ app.config(function($routeProvider,$httpProvider){
     })
     .when('/single',{
         templateUrl: "../views/single.html"
-    })   
+    })
+    .when('/user/:user',{
+        templateUrl: "../views/user-page.html"
+    });   
 });
+app.run(function($rootScope){
+    $rootScope.userApi = 'http://localhost:3000/api/favs/';
+    $rootScope.yelpApi = 'http://localhost:3000/api/yelp/';
+})
 
 
 

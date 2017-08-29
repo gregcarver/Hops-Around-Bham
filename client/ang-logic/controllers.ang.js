@@ -1,4 +1,5 @@
 var app = angular.module('app.controllers', []);
+
 //get list of bars controller
 app.controller("BarGet",['$scope', '$http','$location',function($scope,$http,$location,$httpProvider){
 
@@ -17,4 +18,13 @@ app.controller("BarGet",['$scope', '$http','$location',function($scope,$http,$lo
                 $scope.bars=response.data.businesses
     });
 
+}])
+
+//User Page controller
+app.controller('oneUserPage', ['$scope', '$http', '$location', '$rootScope', function($scope, $http, $location, $rootScope){
+    console.log('A user page');
+    $http.get($rootScope.userUrl)
+    .then(function(response){
+        console.log(response);
+    })
 }])

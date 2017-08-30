@@ -7,12 +7,19 @@
             {{singleBar.name}}
         </div>
         <div class="col-lg-12">
-                    {{singleBar.phone}}
+                    Phone: {{singleBar.phone}}
         </div>
         <div class="col-lg-12">
-                    {{singleBar.location.address1}}
+                    Address: {{singleBar.location.address1}}
+        </div>
+        <div class="col-lg-12">
+                    Longitude: {{singleBar.coordinates.longitude}}
+        </div>
+        <div class="col-lg-12">
+                    Latitude: {{singleBar.coordinates.latitude}}
         </div>
         </div>
+
         <div ng-repeat="items in singleBar">
             <div class="col-lg-6" id="catImage" ng-style="{'background-image':'url({{items.photos}})'}">
             </div>

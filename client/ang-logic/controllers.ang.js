@@ -18,33 +18,11 @@ app.controller("BarGet",['$scope', '$http','$location','$routeParams',function($
     });
 
 }])
-
-
-
-
-
-//get bar by category
-// app.controller("BarGetCat",['$scope', '$http','$location','$routeParams',function($scope,$http,$location,$routeParams){
-         
-        
-//         $scope.categories = $routeParams;
-//         console.log($scope.categories)
-//         $scope.GetCategory=function(){
-//             $http({
-//                 method : 'POST',
-//                 url : "http://localhost:3000/api/yelp/category" + $scope.categories,
-//             })
-//                 .then(function(response){
-//                     console.log(response.data)
-//                     $scope.barsCat=response.data
-//         });
-//         $location.path("/category/"+categories)
-//     }
-// }])
 //get bar by category
 app.controller("BarGetCat",['$scope', '$http','$location','$routeParams',function($scope,$http,$location,$routeParams){
          
         console.log('inside controllerss')
+        var id=$routeParams.id;
         var categories = $routeParams.category;
         console.log($routeParams.category)
             $http({
@@ -59,14 +37,20 @@ app.controller("BarGetCat",['$scope', '$http','$location','$routeParams',functio
         .catch((err) => {
             console.log('err', err);
         })
-        // $location.path("/category/"+categories)
-    
+        $scope.GetId= function(id){
+            $location.path("/single/" + id)
+            console.log(id)
+        }
 }])
-
-
-
-
-
+//single bar
+app.controller("SingleBar",['$scope', '$routeParams', '$http', function($scope, $routeParams, $http){
+     var id=$routeParams.id;
+    $http.post('http://localhost:3000/api/yelp/single/'+id)
+        .then(function(response){
+        $scope.singleBar=response.data
+        console.log(response)
+    })
+}])
 //User Page controller
 app.controller('oneUserPage', ['$scope', '$http', '$location', '$rootScope', '$routeParams', function($scope, $http, $location, $rootScope, $routeParams){
     console.log('A user page');

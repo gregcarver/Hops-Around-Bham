@@ -1,10 +1,21 @@
-<div class="col-lg-6">
-<h1>Test Bar</h1>
-<div id="singleImage"></div>
-<p>123 Drunk Street</p>
-<p>845-666-6666</p>
-</div>
-<div class="col-lg-6">
-<div id="map"></div>
+<div ng-controller="SingleBar">
+    <div id="categoryContainer">
+    <div ng-repeat="items in singleBar">
+        
+        <div class="col-md-6" id="infoStyle">
+        <div class="col-lg-12">
+            {{items.name}}
+        </div>
+        <div class="col-lg-12">
+                    {{items.phone}}
+        </div>
+        <div class="col-lg-12">
+                    {{items.location.address1}}
+        </div>
+        </div>
+        <div class="col-lg-6" id="catImage" ng-style="{'background-image':'url({{items.image_url}})'}">
+        </div>
+    </div>
+    </div>
 </div>
 

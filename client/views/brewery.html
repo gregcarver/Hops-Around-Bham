@@ -16,7 +16,7 @@
                     {{items.location.address1}}
         </div>
         </div>
-        <div class="col-lg-6" id="catImage" ng-style="{'background-image':'url({{items.image_url}})'}">
+        <div class="col-lg-6" id="catImage" ng-click="GetId(items.id)"ng-style="{'background-image':'url({{items.image_url}})'}">
             <!--<img ng-src="{{items.image_url}}">-->
         </div>
     </div>

@@ -13,7 +13,7 @@ app.config(function($routeProvider,$httpProvider){
     .when('/category/brewery',{
     templateUrl: "../views/brewery.html"
     })
-    .when('/single',{
+    .when('/single/:id',{
         templateUrl: "../views/single.html"
     })
     .when('/user/:user',{

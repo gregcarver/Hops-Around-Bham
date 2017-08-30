@@ -26,6 +26,7 @@ ROUTER
       res.send(response.jsonBody);
     })
   })
+  
   //get by category
   .post("/category/:category",function(req,res){
   console.log(req.yelpClient);
@@ -37,6 +38,19 @@ ROUTER
     term: params.category,
     location: "birmingham"
    // categories: "sportsbar" 
+  }).then(response => {
+    res.send(response.jsonBody);
+  
+  })
+})
+  .post("/single/:id",function(req,res){
+  console.log(req.yelpClient);
+  var params = req.params
+  console.log(params.id)
+  let body = req.body;
+  
+  req.yelpClient.search({
+    id: params.id,
   }).then(response => {
     res.send(response.jsonBody);
   

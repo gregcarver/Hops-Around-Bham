@@ -7,6 +7,9 @@ app.config(function($routeProvider,$httpProvider){
     .when('/',{
         templateUrl: "../views/home.html"
     })
+    .when('/home',{
+        templateUrl: "../views/landing.html"
+    })
     .when('/category',{
         templateUrl: "../views/list.html"
     })

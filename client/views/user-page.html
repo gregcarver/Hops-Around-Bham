@@ -1,2 +1,7 @@
 <div ng-controller="oneUserPage">
+    <h2>{{User}}</h2>
+    <h3>My Favorite Bars</h3>
+    <ul ng-repeat="favorites in favoriteInfo">
+        <li>{{favorites.location}}</li>
+    </ul>
 </div>

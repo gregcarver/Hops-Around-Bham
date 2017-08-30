@@ -1,0 +1,15 @@
+<div id="loginWidget" data-ng-controller="loginController">
+    <button data-toggle="collapse" data-target="#loginForm" class="btn btn-default secondary-text">Log In</button>
+    <div id="loginForm" class="collapse ">
+    <form>
+        <div class="form-group">
+            <label for="usernameInput">Username</label>
+            <input type="text" class="form-control" row="3" id="usernameInput" placeholder="username" ng-model="message" required></input>
+            <label for="passwordInput">Password</label>
+            <input type="password" class="form-control" row="3" placeholder="Password" id="passwordInput" required>
+            <button class="btn btn-default" ng-click="LoginPage()">Login</button>
+        </div>
+    </form>
+    </div>
+</div>
+</div>

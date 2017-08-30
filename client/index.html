@@ -15,17 +15,16 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.3/angular-route.js"></script>
 </head>
 <body>
-    <ng-view></ng-view>
-<!-- Navigation Bar  -->
-<section class="first">
+  <!-- Navigation Bar  -->
+<!-- <section class="first">
   <div class="navcontainer"> 
     <h1 class="home-title">Hops Around the 'Ham</h1>
   </div>
-</section>
+</section> -->
 <div class="navbar navbar-default navbar-fixed-top navbar-inverse" data-spy="affix" data-offset-top="400">
   <div class="navcontainer">
     <div class="navbar-header ">
-      <a href="#" class="navbar-brand">Brand</a>
+      <a href="#/home" class="navbar-brand">Home</a>
       <a class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
         <i class="fa fa-bars"></i>
       </a>
@@ -45,6 +44,9 @@
   </div>
 </div>
 <!-- End of navbar -->
+    <ng-view></ng-view>
+
+
 
 <!-- SCRIPTS -->
 <script src="https://code.jquery.com/jquery-3.2.1.js"

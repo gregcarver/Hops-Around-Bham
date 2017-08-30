@@ -13,15 +13,27 @@ app.config(function($routeProvider,$httpProvider){
     .when('/category/brewery',{
     templateUrl: "../views/brewery.html"
     })
-    .when('/category/cocktailbars',{
-        templateUrl: "../views/cocktail.html"
-    })
     .when('/single',{
         templateUrl: "../views/single.html"
     })
     .when('/user/:user',{
         templateUrl: "../views/user-page.html"
-    });   
+    })
+    .when('/category/type1/:category',{
+    templateUrl: "../views/sportsbar.html"
+})
+    .when('/category/type2/:category',{
+    templateUrl: "../views/cocktail.html"
+})
+    .when('/category/type3/:category',{
+    templateUrl: "../views/brewery.html"
+})
+    .when('/category/type4/:category',{
+    templateUrl: "../views/dive.html"
+})
+    .when('/category/type5/:category',{
+    templateUrl: "../views/lounge.html"
+    })           
 });
 app.run(function($rootScope){
     $rootScope.userApi = 'http://localhost:3000/api/favs/';

@@ -27,18 +27,16 @@ ROUTER
     })
   })
   //get by category
-  .post("/:category",function(req,res){
+  .post("/category/:category",function(req,res){
   console.log(req.yelpClient);
-  var category = req.params
-  console.log(category)
+  var params = req.params
+  console.log(params.category)
   let body = req.body;
   
   req.yelpClient.search({
-    // term: "bar",
-    location: "birmingham",
-    categories: "sportsbar",
-
-    
+    term: params.category,
+    location: "birmingham"
+   // categories: "sportsbar" 
   }).then(response => {
     res.send(response.jsonBody);
   

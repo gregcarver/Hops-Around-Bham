@@ -1,16 +1,13 @@
 <div class="col-lg-12">
-<div id="brewBanner"></div>
+<div id="loungeBanner"></div>
 </div>
-<div ng-controller="BarGet">
+<div ng-controller="BarGetCat">
     <div id="categoryContainer">
-    <div ng-repeat="items in bars">
+    <div ng-repeat="items in barsCat">
         
         <div class="col-md-6" id="infoStyle">
         <div class="col-lg-12">
             {{items.name}}
-        </div>
-        <div class="col-lg-12">
-                    {{items.categories[0].title}}
         </div>
         <div class="col-lg-12">
                     {{items.phone}}

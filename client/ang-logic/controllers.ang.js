@@ -18,22 +18,55 @@ app.controller("BarGet",['$scope', '$http','$location','$routeParams',function($
     });
 
 }])
+
+
+
+
+
+//get bar by category
+// app.controller("BarGetCat",['$scope', '$http','$location','$routeParams',function($scope,$http,$location,$routeParams){
+         
+        
+//         $scope.categories = $routeParams;
+//         console.log($scope.categories)
+//         $scope.GetCategory=function(){
+//             $http({
+//                 method : 'POST',
+//                 url : "http://localhost:3000/api/yelp/category" + $scope.categories,
+//             })
+//                 .then(function(response){
+//                     console.log(response.data)
+//                     $scope.barsCat=response.data
+//         });
+//         $location.path("/category/"+categories)
+//     }
+// }])
 //get bar by category
 app.controller("BarGetCat",['$scope', '$http','$location','$routeParams',function($scope,$http,$location,$routeParams){
-        // console.log(category)
-        $location.path("/category/"+category)
-        var category = $routeParams;
-        $scope.GetCategory=function(category){
+         
+        console.log('inside controllerss')
+        var categories = $routeParams.category;
+        console.log($routeParams.category)
             $http({
                 method : 'POST',
-                url : "http://localhost:3000/api/yelp/" + category,
+                url : "http://localhost:3000/api/yelp/category/" + categories,
+                data: {}
             })
                 .then(function(response){
-                    console.log(response.data.businesses)
+                    console.log(response.data)
                     $scope.barsCat=response.data.businesses
-        });
-    }
+        })
+        .catch((err) => {
+            console.log('err', err);
+        })
+        // $location.path("/category/"+categories)
+    
 }])
+
+
+
+
+
 //User Page controller
 app.controller('oneUserPage', ['$scope', '$http', '$location', '$rootScope', '$routeParams', function($scope, $http, $location, $rootScope, $routeParams){
     console.log('A user page');

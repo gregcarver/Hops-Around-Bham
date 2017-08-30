@@ -40,16 +40,31 @@ app.controller("BarGetCat",['$scope', '$http','$location','$routeParams',functio
         $scope.GetId= function(id){
             $location.path("/single/" + id)
             console.log(id)
+        //     var id=$routeParams.id;
+        //     $http.post('http://localhost:3000/api/yelp/single/'+id)
+        //         .then(function(response){
+        //             console.log('inside post')
+        //         $scope.singleBar=response.data.businesses
+        //         console.log(response)
+        //     })
+        //     .catch((err) => {
+        //     console.log('err', err);
+        // })
         }
 }])
 //single bar
-app.controller("SingleBar",['$scope', '$routeParams', '$http', function($scope, $routeParams, $http){
+app.controller("singleBar",['$scope', '$routeParams', '$http', function($scope, $routeParams, $http){
+    console.log('inside single')
      var id=$routeParams.id;
     $http.post('http://localhost:3000/api/yelp/single/'+id)
         .then(function(response){
+            console.log('inside post')
         $scope.singleBar=response.data
         console.log(response)
     })
+            .catch((err) => {
+            console.log('err', err);
+        })
 }])
 //User Page controller
 app.controller('oneUserPage', ['$scope', '$http', '$location', '$rootScope', '$routeParams', function($scope, $http, $location, $rootScope, $routeParams){

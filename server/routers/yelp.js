@@ -46,14 +46,14 @@ ROUTER
   .post("/single/:id",function(req,res){
   console.log(req.yelpClient);
   var params = req.params
-  console.log(params.id)
   let body = req.body;
-  
-  req.yelpClient.search({
-    id: params.id,
-  }).then(response => {
-    res.send(response.jsonBody);
-  
+  var fuckyou = params.id.toString()
+  req.yelpClient.business(fuckyou
+    // id: params.id,
+    // term: "bar",
+    // location: "birmingham"
+  ).then(response => {
+     res.send(response.jsonBody);
   })
 })
 module.exports = ROUTER;

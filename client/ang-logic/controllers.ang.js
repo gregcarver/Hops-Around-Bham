@@ -89,41 +89,77 @@ app.controller('oneUserPage', ['$scope', '$http', '$location', '$rootScope', '$r
     console.log($routeParams);
     var id = $routeParams.user;
 
-    //geolocate
- 
     $http.get('http://localhost:3000/api/favs/user/' +id)
     .then(function(response){
         $scope.favoriteInfo = response.data
         console.log($scope.favoriteInfo);
         $rootScope.favs = $scope.favoriteInfo;
             // User Map
-        var uluru = {lat: 33.5152718, lng: -86.8170129};
-        var map = new google.maps.Map(document.getElementById('userMap'), {
-            zoom: 13,
-            center: uluru
-        });
-        console.log($rootScope)
-        $rootScope.favs.forEach(function(element){
-            var uluru = {
-                lat: element.latitude,
-                lng: element.longitude
-            }
-            var iconImage = '../images/hop.png'
-            console.log(uluru);
-            var marker = new google.maps.Marker({
-                position: uluru,
-                map: map,
-                animation: google.maps.Animation.DROP,
-                icon: iconImage
-            });
-            var contentString = '<div>'+'<p>'+ element.name +'</p>'+'</div>';
-            var infowindow = new google.maps.InfoWindow({
-                content: contentString
-            });
-            marker.addListener('click', function() {
-                infowindow.open(userMap, marker);
-            });
-    })
+            //locate
+            $http.post('https://www.googleapis.com/geolocation/v1/geolocate?key=AIzaSyBClv-zTbB8Akv7LlKBA38u2VNvaTgqtow',
+            {
+                "homeMobileCountryCode": 310,
+                "homeMobileNetworkCode": 410,
+                "considerIp": "true",
+            })
+            //build map
+            .then(function(response){
+                $rootScope.location = response.data.location;
+                var directionsDisplay;
+                var directionsService = new google.maps.DirectionsService();
+                var directionMap;
+                  directionsDisplay = new google.maps.DirectionsRenderer();
+                  var myCenter = {lat: 33.5113746, lng: -86.8130575};
+                  var map = new google.maps.Map(document.getElementById('userMap'), {
+                      zoom: 13,
+                      center: myCenter
+                  });
+                  directionsDisplay.setMap(map);
+                  var myMarker = new google.maps.Marker({
+                      position: myCenter,
+                      map: map,
+                      animation: google.maps.Animation.DROP
+                  })
+                  $rootScope.favs.forEach(function(element){
+                      var uluru = {
+                          lat: element.latitude,
+                          lng: element.longitude
+                      }
+                      var iconImage = '../images/hop.png'
+                      var marker = new google.maps.Marker({
+                          position: uluru,
+                          map: map,
+                          animation: google.maps.Animation.DROP,
+                          icon: iconImage
+                      });
+                      var contentString = '<div>'+'<p>'+ element.name +'</p>'+'</div>';
+                      var infowindow = new google.maps.InfoWindow({
+                          content: contentString
+                      });
+                      marker.addListener('click', function() {
+                          infowindow.open(userMap, marker);
+                      });
+                  })
+                  
+                 
+                $scope.calcRoute = function(lat, lng) {
+                    var end = {
+                        lat: lat,
+                        lng: lng
+                    }
+                    console.log(end);
+                    var request = {
+                    origin: myCenter,
+                    destination: end,
+                    travelMode: 'DRIVING'
+                  };
+                  directionsService.route(request, function(result, status) {
+                    if (status == 'OK') {
+                      directionsDisplay.setDirections(result);
+                    }
+                  });
+                }
+            })
     })
 
     $http.get('http://localhost:3000/api/favs/user')
@@ -141,6 +177,15 @@ app.controller('oneUserPage', ['$scope', '$http', '$location', '$rootScope', '$r
         console.log($scope.User);
     })
 
+
+    //get directions
+
+
+
+    // var myWindow = window.open("", "", "width=200, height=100");   // Opens a new window
+    // myWindow.document.write("<p>A new window!</p>");         // Some text in the new window
+    // myWindow.focus(); 
+    
     
 
 }])

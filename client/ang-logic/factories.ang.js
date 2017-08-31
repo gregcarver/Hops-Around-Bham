@@ -1,0 +1,1 @@
+var factory = angular.module('app.factories',['ngRoute']);

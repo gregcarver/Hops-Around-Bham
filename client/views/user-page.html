@@ -11,6 +11,7 @@
                 <h5 class="col-md-5">{{favorites.name}}</h5>
                 <p class="col-md-12">Phone #: {{favorites.display_phone}}</p>
                 <p class="col-md-12">Address: {{favorites.address}}</p>
+                <button class="btn btn-primary" ng-click="calcRoute(favorites.latitude, favorites.longitude)">Get Directions</button>
             </div> 
         </div>
     </div>

@@ -71,6 +71,8 @@ app.controller('oneUserPage', ['$scope', '$http', '$location', '$rootScope', '$r
     console.log('A user page');
     console.log($routeParams);
     var id = $routeParams.user;
+
+    //geolocate
  
     $http.get('http://localhost:3000/api/favs/user/' +id)
     .then(function(response){
@@ -78,31 +80,32 @@ app.controller('oneUserPage', ['$scope', '$http', '$location', '$rootScope', '$r
         console.log($scope.favoriteInfo);
         $rootScope.favs = $scope.favoriteInfo;
             // User Map
-    var uluru = {lat: 33.5152718, lng: -86.8170129};
-    var map = new google.maps.Map(document.getElementById('userMap'), {
-        zoom: 13,
-        center: uluru
-    });
-    console.log($rootScope)
-    $rootScope.favs.forEach(function(element){
-        var uluru = {
-            lat: element.latitude,
-            lng: element.longitude
-        }
-        console.log(uluru);
-        var marker = new google.maps.Marker({
-            position: uluru,
-            map: map,
-            animation: google.maps.Animation.DROP,
-            title: "heellllooooo"
+        var uluru = {lat: 33.5152718, lng: -86.8170129};
+        var map = new google.maps.Map(document.getElementById('userMap'), {
+            zoom: 13,
+            center: uluru
         });
-        var contentString = '<div>'+'<p>'+ element.name +'</p>'+'</div>';
-        var infowindow = new google.maps.InfoWindow({
-            content: contentString
-        });
-        marker.addListener('click', function() {
-            infowindow.open(userMap, marker);
-        });
+        console.log($rootScope)
+        $rootScope.favs.forEach(function(element){
+            var uluru = {
+                lat: element.latitude,
+                lng: element.longitude
+            }
+            var iconImage = '../images/hop.png'
+            console.log(uluru);
+            var marker = new google.maps.Marker({
+                position: uluru,
+                map: map,
+                animation: google.maps.Animation.DROP,
+                icon: iconImage
+            });
+            var contentString = '<div>'+'<p>'+ element.name +'</p>'+'</div>';
+            var infowindow = new google.maps.InfoWindow({
+                content: contentString
+            });
+            marker.addListener('click', function() {
+                infowindow.open(userMap, marker);
+            });
     })
     })
 

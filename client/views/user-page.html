@@ -2,18 +2,17 @@
     <div class="user row">
         <h1 class="col-lg-12 center-text">{{User}}</h1>
     </div>
-    <div class="row">
-        <h3 class="col-lg-12 ">Hey let's check out these bars yo.</h3>
-    </div>
     <div class="col-lg-6 left-container">
+        <div class="row">
+            <h3 class="col-lg-12 center-text">Hey let's check out these bars yo.</h3>
+        </div>
         <div ng-repeat="favorites in favoriteInfo">
-             <div class="fav-list-text"> 
+            <div class="fav-list-text"> 
                 <h5 class="col-md-5">{{favorites.name}}</h5>
                 <p class="col-md-12">Phone #: {{favorites.display_phone}}</p>
                 <p class="col-md-12">Address: {{favorites.address}}</p>
-             </div> 
-                <div class="col-md-5" id="catImage" ng-style="{'background-image':'url({{favorites.image_url}})'}"></div> 
-            </div>
+            </div> 
+        </div>
     </div>
 
     <div class="col-lg-6 right-container">

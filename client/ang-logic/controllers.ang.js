@@ -77,25 +77,7 @@ app.controller('oneUserPage', ['$scope', '$http', '$location', '$rootScope', '$r
         $scope.favoriteInfo = response.data
         console.log($scope.favoriteInfo);
         $rootScope.favs = $scope.favoriteInfo;
-    })
-
-    $http.get('http://localhost:3000/api/favs/user')
-    .then(function(response){
-        console.log(response);
-        response.data.forEach(function(element){
-            if(element.id == id){
-               $scope.User = element.username;
-               console.log($scope.User);
-               return $scope.User;
-            }else{
-                console.log('no user found');
-            }
-        })
-        console.log($scope.User);
-    })
-
-    
-    // User Map
+            // User Map
     var uluru = {lat: 33.5152718, lng: -86.8170129};
     var map = new google.maps.Map(document.getElementById('userMap'), {
         zoom: 13,
@@ -122,4 +104,23 @@ app.controller('oneUserPage', ['$scope', '$http', '$location', '$rootScope', '$r
             infowindow.open(userMap, marker);
         });
     })
+    })
+
+    $http.get('http://localhost:3000/api/favs/user')
+    .then(function(response){
+        console.log(response);
+        response.data.forEach(function(element){
+            if(element.id == id){
+               $scope.User = element.username;
+               console.log($scope.User);
+               return $scope.User;
+            }else{
+                console.log('no user found');
+            }
+        })
+        console.log($scope.User);
+    })
+
+    
+
 }])

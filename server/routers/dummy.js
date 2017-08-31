@@ -14,10 +14,12 @@ $scope.saveFavorite = function(){
     var data = ({
             id : $scope.userID,
             name : $scope.name,
-            placeID : $scope.id,
+            locationID : $scope.id,
             image_url : $scope.image_url,
-            display_address : $scope.display_address,
-            displayphone: $scope.displayphone
+            address : $scope.display_address,
+            display_phone: $scope.display_phone,
+            latitude: $scope.coordinates.latitude,
+            longitude: $scope.coordinates.longitude
     });
     $http.post('http://localhost:3000/api/favs', data)
     .then(function(response){

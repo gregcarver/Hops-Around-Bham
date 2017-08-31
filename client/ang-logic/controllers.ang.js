@@ -74,8 +74,9 @@ app.controller('oneUserPage', ['$scope', '$http', '$location', '$rootScope', '$r
  
     $http.get('http://localhost:3000/api/favs/user/' +id)
     .then(function(response){
-        console.log(response);
         $scope.favoriteInfo = response.data
+        console.log($scope.favoriteInfo);
+        $rootScope.favs = $scope.favoriteInfo;
     })
 
     $http.get('http://localhost:3000/api/favs/user')
@@ -91,5 +92,34 @@ app.controller('oneUserPage', ['$scope', '$http', '$location', '$rootScope', '$r
             }
         })
         console.log($scope.User);
+    })
+
+    
+    // User Map
+    var uluru = {lat: 33.5152718, lng: -86.8170129};
+    var map = new google.maps.Map(document.getElementById('userMap'), {
+        zoom: 13,
+        center: uluru
+    });
+    console.log($rootScope)
+    $rootScope.favs.forEach(function(element){
+        var uluru = {
+            lat: element.latitude,
+            lng: element.longitude
+        }
+        console.log(uluru);
+        var marker = new google.maps.Marker({
+            position: uluru,
+            map: map,
+            animation: google.maps.Animation.DROP,
+            title: "heellllooooo"
+        });
+        var contentString = '<div>'+'<p>'+ element.name +'</p>'+'</div>';
+        var infowindow = new google.maps.InfoWindow({
+            content: contentString
+        });
+        marker.addListener('click', function() {
+            infowindow.open(userMap, marker);
+        });
     })
 }])

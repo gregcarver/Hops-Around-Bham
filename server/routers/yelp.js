@@ -47,8 +47,8 @@ ROUTER
   console.log(req.yelpClient);
   var params = req.params
   let body = req.body;
-  var fuckyou = params.id.toString()
-  req.yelpClient.business(fuckyou
+  var stringed = params.id.toString()
+  req.yelpClient.business(stringed
     // id: params.id,
     // term: "bar",
     // location: "birmingham"
@@ -56,4 +56,5 @@ ROUTER
      res.send(response.jsonBody);
   })
 })
+
 module.exports = ROUTER;

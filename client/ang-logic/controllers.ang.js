@@ -53,18 +53,35 @@ app.controller("BarGetCat",['$scope', '$http','$location','$routeParams',functio
         }
 }])
 //single bar
-app.controller("singleBar",['$scope', '$routeParams', '$http', function($scope, $routeParams, $http){
+app.controller("singleBar",['$scope', '$routeParams', '$http','$rootScope', function($scope, $routeParams, $http,$rootScope){
     console.log('inside single')
      var id=$routeParams.id;
     $http.post('http://localhost:3000/api/yelp/single/'+id)
         .then(function(response){
             console.log('inside post')
         $scope.singleBar=response.data
-        console.log(response)
+        // $scope.latitude=response.data.coordinates.latitude
+        // $scope.longitude=reponse.data.coordinates.longitude
+        console.log(response.data)
+            var uluru = {lat: $scope.singleBar.coordinates.latitude, lng: $scope.singleBar.coordinates.longitude};
+    var map = new google.maps.Map(document.getElementById('userMap'), {
+        zoom: 13,
+        center: uluru
+    });
+            var marker = new google.maps.Marker({
+            position: uluru,
+            map: map,
+            animation: google.maps.Animation.DROP,
+            title: "heellllooooo"
+        });
+                marker.addListener('click', function() {
+            infowindow.open(userMap, marker);
+        });
     })
             .catch((err) => {
             console.log('err', err);
         })
+
 }])
 //User Page controller
 app.controller('oneUserPage', ['$scope', '$http', '$location', '$rootScope', '$routeParams', function($scope, $http, $location, $rootScope, $routeParams){

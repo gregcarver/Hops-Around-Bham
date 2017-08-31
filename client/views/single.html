@@ -1,32 +1,30 @@
+
+
+
 <div ng-controller="singleBar">
-    <div id="categoryContainer">
+
+    <!--<div id="singleContainer">-->
     
-         
-        <div class="col-md-6" id="infoStyle">
-        <div class="col-lg-12">
-            {{singleBar.name}}
-        </div>
-        <div class="col-lg-12">
+        
+        <div class="col-md-6" id="singleInfo">
+            <br>
+            <h1>Beer Locator</h1>
+                    <br>
+                    {{singleBar.name}}
+                    <br>
                     Phone: {{singleBar.phone}}
-        </div>
-        <div class="col-lg-12">
+                    <br>
                     Address: {{singleBar.location.address1}}
-        </div>
-        <div class="col-lg-12">
-                    Longitude: {{singleBar.coordinates.longitude}}
-        </div>
-        <div class="col-lg-12">
-                    Latitude: {{singleBar.coordinates.latitude}}
-        </div>
-        </div>
+                    <br>
+                    <span class="glyphicon glyphicon-star"></span>        
+                    Rating: {{singleBar.rating}}
 
-        <div ng-repeat="items in singleBar">
-            <div class="col-lg-6" id="catImage" ng-style="{'background-image':'url({{items.photos}})'}">
             </div>
-            
-        </div>
+            <div class="col-md-6" id="catImage" ng-style="{'background-image':'url({{items.photos}})'}">
+                im a map
+            </div>
+        
+        <!--</div>-->
 
-    </div>
-    
 </div>
 

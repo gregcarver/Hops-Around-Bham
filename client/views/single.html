@@ -10,14 +10,17 @@
         
              <div class="fav-list-text"> 
                 <h5 class="col-md-5">{{singleBar.name}}</h5>
+                <p class="col-md-12"><span class="glyphicon glyphicon-star" style="color:yellow">Rating:{{singleBar.rating}}</span></p>
+                <span>{{singleBar.hours[0].open[0].start}}</span> -<span>{{singleBar.hours[0].open[0].end}}</span>
                 <p class="col-md-12">Phone #: {{singleBar.display_phone}}</p>
                 <p class="col-md-12">Address: {{singleBar.location.display_address[0]}}</p>
                 <p class="col-md-12">{{singleBar.location.display_address[1]}}</p>
-                <p class="col-md-12"><span class="glyphicon glyphicon-star" style="color:yellow">Rating:{{singleBar.rating}}</span></p>
+                
+                
              </div> 
-                <div class="col-md-5" id="catImage" ng-style="{'background-image':'url({{singleBar.name}})'}"></div> 
+                <div class="col-md-5" id="catImage" ng-style="{'background-image':'url({{singleBar.image_url}})'}"></div> 
     </div>
-
+    <button ng-click="saveFavorite(singleBar)">click me</button>
     <div class="col-lg-6 right-container">
         <div id="userMap" style="width:100%;height:400px">
         </div>

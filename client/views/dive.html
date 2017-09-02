@@ -14,12 +14,15 @@
             <div class="col-lg-12" id="innerTextStyle">
         {{items.name}}
             </div>
+            <span class="glyphicon glyphicon-star">Rating:{{items.rating}}</span>
         <br>
-        {{items.phone}}
+        {{items.display_phone}}
         <br>
         {{items.location.address1}}
         <br>
-        <span class="glyphicon glyphicon-star">Rating:{{items.rating}}</span>
+        {{items.distance}}
+        <br>
+        
         </div>
         <div id="diveImage" class="col-lg-3" ng-click="GetId(items.id)" ng-style="{'background-image':'url({{items.image_url}})'}">
         </div>

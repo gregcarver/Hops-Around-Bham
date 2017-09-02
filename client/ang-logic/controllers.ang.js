@@ -81,7 +81,25 @@ app.controller("singleBar",['$scope', '$routeParams', '$http','$rootScope', func
             .catch((err) => {
             console.log('err', err);
         })
-
+$scope.saveFavorite = function(){
+    var data = ({
+            id : "10",
+            name : $scope.singleBar.name,
+            locationID : $scope.singleBar.id,
+            image_url : $scope.singleBar.image_url,
+            address : $scope.singleBar.location.display_address[0],
+            address1: $scope.singleBar.location.display_address[1],
+            display_phone: $scope.singleBar.display_phone,
+            latitude: $scope.singleBar.coordinates.latitude,
+            longitude: $scope.singleBar.coordinates.longitude,
+            rating : $scope.singleBar.rating
+    });
+    $http.post('http://localhost:3000/api/favs', data)
+    .then(function(response){
+        console.log(response);
+        alert('Favorite Saved!');
+    });
+};
 }])
 //User Page controller
 app.controller('oneUserPage', ['$scope', '$http', '$location', '$rootScope', '$routeParams', function($scope, $http, $location, $rootScope, $routeParams){

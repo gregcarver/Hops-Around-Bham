@@ -41,6 +41,8 @@ app.config(function($routeProvider,$httpProvider){
 app.run(function($rootScope){
     $rootScope.userApi = 'http://localhost:3000/api/favs/';
     $rootScope.yelpApi = 'http://localhost:3000/api/yelp/';
+    $rootScope.fav = [];
+    $rootScope.hideNav;
 })
 app.filter('phoneNumber', function () {
         return function (number) {

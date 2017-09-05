@@ -20,7 +20,7 @@ ROUTER
     
     req.yelpClient.search({
       term: "bar",
-      location: "birmingham",
+      location: "birmingham,AL",
       
     }).then(response => {
       res.send(response.jsonBody);
@@ -36,7 +36,7 @@ ROUTER
   
   req.yelpClient.search({
     term: params.category,
-    location: "birmingham"
+    location: "birmingham,AL"
    // categories: "sportsbar" 
   }).then(response => {
     res.send(response.jsonBody);

@@ -21,7 +21,7 @@
         <br>
         {{items.location.address1}}
         <br>
-        {{items.distance}}
+        <span class="glyphicon glyphicon-map-marker"></span> {{items.distance | toMiles | limitTo : 3}} Miles 
         <br>
         
         </div>

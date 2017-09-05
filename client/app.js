@@ -65,17 +65,14 @@ app.filter('phoneNumber', function () {
             return formattedNumber;
         };
     })
-// app.filter('to12HourTime',function(time) {
-//   var b = time.split(/\D/);
-//   return (b[0]%12 || 12) + ':' + b[1] +
-//          (b[0]<11? ' AM' : ' PM');
-// }
-
-// // Some tests
-// ['23:15','2:15','03:15','00:30'].forEach(function(v) {
-//     console.log(v + ' => ' + to12HourTime(v));
-// });return (hours + ":" + minutes + " " + suffix);
-// });
+app.filter('toMiles',function() {
+    return function(feet){
+        return (feet*0.00018939);
+        
+    }
+		
+	
+})
 
 
 

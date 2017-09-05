@@ -7,6 +7,31 @@ app.controller('homeController', ["$rootScope", function($rootScope){
 app.controller('landingController', ["$rootScope", function($rootScope){
     $rootScope.hideNav = false;
 }])
+
+
+app.controller("loginController", ['$location', '$http', '$scope', function($location,$http,$scope){
+    var loginForm = document.getElementById("loginForm");
+    var usernameInput = document.getElementById("usernameInput");
+    var passwordInput = document.getElementById("passwordInput");
+    
+    $http.get('http://localhost:3000/api/favs/user')
+        .then(function(response){
+            $scope.userList = response.data;
+        })
+    $scope.seeUser = function(id){
+        $location.path('/user/'+id);
+    }
+    $scope.LoginPage = function(){
+        if(usernameInput.value === 'Cortana' && passwordInput.value !==''){
+            $location.path('/user/10');
+            loginForm.classList.remove("in");
+        } else{
+            alert('Username/Password incorrect; please verify your login and try again.');
+            usernameInput.value = "";
+            passwordInput.value = "";
+        }
+    }
+}])
 //get list of bars controller
 app.controller("BarGet",['$scope', '$http','$location','$routeParams',function($scope,$http,$location,$routeParams){
         console.log('bars load')
@@ -56,7 +81,7 @@ app.controller("BarGetCat",['$scope', '$http','$location','$routeParams', '$root
         }
 }])
 //single bar
-app.controller("singleBar",['$scope', '$routeParams', '$http','$rootScope', function($scope, $routeParams, $http,$rootScope){
+app.controller("singleBar",['$scope', '$routeParams', '$http','$rootScope', '$location', function($scope, $routeParams, $http,$rootScope,$location){
     console.log('inside single')
     $rootScope.hideNav = false;
      var id=$routeParams.id;
@@ -102,6 +127,7 @@ $scope.saveFavorite = function(){
     .then(function(response){
         console.log(response);
         alert('Favorite Saved!');
+        $location.path('/user/10');
     });
 };
 }])

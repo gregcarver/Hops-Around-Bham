@@ -40,16 +40,6 @@ ROUTER
                 res.sendStatus(500);
             });
     })
-    // .get('/user/:user', function(req, res){
-    //     console.log('get single user info');
-    //     usersHandler.oneUser(req.params.user)
-    //         .then(function(success){
-    //             res.send(success);
-    //         }, function(err){
-    //             console.log(err);
-    //             res.sendStatus(500);
-    //         })
-    // })
     .get('/user/:id', function(req, res){
         console.log('hello here are my favs');
         console.log(req.params.id);

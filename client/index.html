@@ -25,7 +25,7 @@
     <h1 class="home-title">Hops Around the 'Ham</h1>
   </div>
 </section> -->
-<div class="navbar navbar-default navbar-fixed-top navbar-inverse" data-spy="affix" data-offset-top="400" ng-hide="hideNav">
+<div class="navbar navbar-default navbar-fixed-top navbar-inverse" data-spy="affix" data-offset-top="400" ng-hide="hideNav" ng-controller="loginController">
   <div class="navcontainer">
     <div class="navbar-header ">
       <a href="#/home" class="navbar-brand">Home</a>
@@ -41,8 +41,19 @@
         <li><a href="#/category/type4/divebars">Dives</a></li>
         <li><a href="#/category/type1/sportsbar">Sports</a></li>        
       </ul>
-      <ul class="nav navbar-right navbar-nav">
-        <li>
+      <ul class="nav navbar-right">
+          <li data-toggle="collapse" data-target="#loginForm" class="secondary-text">Log In</li>
+          <div id="loginForm" class="collapse ">
+              <form>
+                  <div class="form-group">
+                      <label for="usernameInput">Username</label>
+                      <input type="text" class="form-control" row="3" id="usernameInput" placeholder="username" ng-model="message" required></input>
+                      <label for="passwordInput">Password</label>
+                      <input type="password" class="form-control" row="3" placeholder="Password" id="passwordInput" required>
+                      <button class="btn btn-default" ng-click="LoginPage()">Login</button>
+                  </div>
+              </form>
+          </div>
       </ul>
     </div>		
   </div>

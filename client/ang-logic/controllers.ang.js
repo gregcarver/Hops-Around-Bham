@@ -1,8 +1,16 @@
 var app = angular.module('app.controllers', ['ngRoute']);
 
+app.controller('homeController', ["$rootScope", function($rootScope){
+    $rootScope.hideNav = true;
+}])
+
+app.controller('landingController', ["$rootScope", function($rootScope){
+    $rootScope.hideNav = false;
+}])
 //get list of bars controller
 app.controller("BarGet",['$scope', '$http','$location','$routeParams',function($scope,$http,$location,$routeParams){
         console.log('bars load')
+            $rootScope.hideNav = false;
         $http({
             method : 'POST',
             url : "http://localhost:3000/api/yelp",
@@ -20,7 +28,7 @@ app.controller("BarGet",['$scope', '$http','$location','$routeParams',function($
 }])
 //get bar by category
 app.controller("BarGetCat",['$scope', '$http','$location','$routeParams',function($scope,$http,$location,$routeParams){
-         
+        $rootScope.hideNav = false;
         console.log('inside controllerss')
         var id=$routeParams.id;
         var categories = $routeParams.category;
@@ -55,6 +63,7 @@ app.controller("BarGetCat",['$scope', '$http','$location','$routeParams',functio
 //single bar
 app.controller("singleBar",['$scope', '$routeParams', '$http','$rootScope', function($scope, $routeParams, $http,$rootScope){
     console.log('inside single')
+    $rootScope.hideNav = false;
      var id=$routeParams.id;
     $http.post('http://localhost:3000/api/yelp/single/'+id)
         .then(function(response){
@@ -104,6 +113,7 @@ $scope.saveFavorite = function(){
 //User Page controller
 app.controller('oneUserPage', ['$scope', '$http', '$location', '$rootScope', '$routeParams', function($scope, $http, $location, $rootScope, $routeParams){
     console.log('A user page');
+    $rootScope.hideNav = false;
     console.log($routeParams);
     var id = $routeParams.user;
 

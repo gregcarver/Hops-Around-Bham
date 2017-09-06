@@ -38,14 +38,14 @@
         <li><a href="#/category/type1/sportsbar">Sports</a></li>        
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li id="userSelect"><span>User Profiles</span>
+        <li id="userSelect" ng-hide="hideUsers"><span>User Profiles</span>
             <select placeholder="User Profiles" ng-options="user.username for user in userList" ng-model="userId" ng-change="seeUser(userId.id)">
             </select>
         </li>
           <li  class="dropdown " id="loginControl">
             <a class="dropdown-toggle" data-toggle="dropdown">Log In</a>
             <div id="loginForm" class="dropdown-menu ">
-              <form class="form">
+              <form class="form" novalidate>
                       <input placeholder="Username" type="text" class="form-control" row="3" id="usernameInput" placeholder="username" ng-model="message" required></input>
                       <input placeholder="Password" type="password" class="form-control" row="3" placeholder="Password" id="passwordInput" required>
                       <button class="btn btn-default" ng-click="LoginPage()">Login</button>

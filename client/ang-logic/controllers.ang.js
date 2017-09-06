@@ -9,7 +9,7 @@ app.controller('landingController', ["$rootScope", function($rootScope){
 }])
 
 
-app.controller("loginController", ['$location', '$http', '$scope', "$routeParams", function($location,$http,$scope,$routeParams){
+app.controller("loginController", ['$location', '$http', '$scope', "$routeParams", "$rootScope", function($location,$http,$scope,$routeParams,$rootScope){
     var loginControl = document.getElementById("loginControl");
     var usernameInput = document.getElementById("usernameInput");
     var passwordInput = document.getElementById("passwordInput");
@@ -26,6 +26,7 @@ app.controller("loginController", ['$location', '$http', '$scope', "$routeParams
         if(usernameInput.value === 'Cortana' && passwordInput.value !==''){
             $location.path('/user/10');
             loginControl.classList.remove("open");
+            $rootScope.hideUsers = false;
         } else{
             alert('Username/Password incorrect; please verify your login and try again.');
             usernameInput.value = "";

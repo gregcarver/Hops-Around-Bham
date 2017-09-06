@@ -43,6 +43,7 @@ app.run(function($rootScope){
     $rootScope.yelpApi = 'http://localhost:3000/api/yelp/';
     $rootScope.fav = [];
     $rootScope.hideNav;
+    $rootScope.hideUsers = true;
 })
 app.filter('phoneNumber', function () {
         return function (number) {

@@ -10,7 +10,7 @@ app.controller('landingController', ["$rootScope", function($rootScope){
 
 
 app.controller("loginController", ['$location', '$http', '$scope', function($location,$http,$scope){
-    var loginForm = document.getElementById("loginForm");
+    var loginControl = document.getElementById("loginControl");
     var usernameInput = document.getElementById("usernameInput");
     var passwordInput = document.getElementById("passwordInput");
     
@@ -24,12 +24,14 @@ app.controller("loginController", ['$location', '$http', '$scope', function($loc
     $scope.LoginPage = function(){
         if(usernameInput.value === 'Cortana' && passwordInput.value !==''){
             $location.path('/user/10');
-            loginForm.classList.remove("in");
+            loginControl.classList.remove("open");
         } else{
             alert('Username/Password incorrect; please verify your login and try again.');
             usernameInput.value = "";
             passwordInput.value = "";
         }
+        usernameInput.value = "";
+        passwordInput.value = "";
     }
 }])
 //get list of bars controller
@@ -225,16 +227,5 @@ app.controller('oneUserPage', ['$scope', '$http', '$location', '$rootScope', '$r
         })
         console.log($scope.User);
     })
-
-
-    //get directions
-
-
-
-    // var myWindow = window.open("", "", "width=200, height=100");   // Opens a new window
-    // myWindow.document.write("<p>A new window!</p>");         // Some text in the new window
-    // myWindow.focus(); 
-    
-    
 
 }])

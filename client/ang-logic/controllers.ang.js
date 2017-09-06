@@ -9,17 +9,18 @@ app.controller('landingController', ["$rootScope", function($rootScope){
 }])
 
 
-app.controller("loginController", ['$location', '$http', '$scope', function($location,$http,$scope){
+app.controller("loginController", ['$location', '$http', '$scope', "$routeParams", function($location,$http,$scope,$routeParams){
     var loginControl = document.getElementById("loginControl");
     var usernameInput = document.getElementById("usernameInput");
     var passwordInput = document.getElementById("passwordInput");
-    
     $http.get('http://localhost:3000/api/favs/user')
         .then(function(response){
             $scope.userList = response.data;
+            console.log($scope.userList);
         })
     $scope.seeUser = function(id){
         $location.path('/user/'+id);
+        console.log(id);
     }
     $scope.LoginPage = function(){
         if(usernameInput.value === 'Cortana' && passwordInput.value !==''){

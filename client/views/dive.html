@@ -1,16 +1,14 @@
 <div id="dive-background">
 <!-- Banner -->
-    <div class="col-lg-12">
-        <div id="diveBanner"></div>
-    </div>
-    <div class="cat-title">Dive Bars</div>
+    <div id="diveBanner"></div>
+        <div class="cat-title">Dive Bars</div>
 
     <div ng-controller="BarGetCat">
         <div id="diveContainer">  
             <div ng-repeat="items in barsCat" id="diveInnerContainer" class="diveTextStyle">
                 <div class="col-lg-9 dive-inner-text center-text">
                     <div class="col-lg-12" id="innerTextStyle">
-                        {{items.name}}
+                        {{items.name | limitTo:24}}
                     </div>
                     <span class="glyphicon glyphicon-star">Rating:{{items.rating}}</span>
                 <br>

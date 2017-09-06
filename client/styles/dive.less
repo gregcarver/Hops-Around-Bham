@@ -1,11 +1,13 @@
 #diveBanner{
     background-image: url("../images/divebar.png");
     background-size:cover;
-    width:100%;
+    width:100vw;
     height:400px;
     margin-bottom: 1em;
     filter: blur(2px) grayscale(100%);
+    padding-left:-15px;
 }
+
 #diveContainer{
     // margin-left:5%;
     margin-right:5%;
@@ -68,7 +70,7 @@
     width:70%
 }
 #dive-background:before { /*sudo class creates layer behind body */
-    background-color: black;
+    background-color: #C0C0C0;
     background-size: 100% 100%;
     background-repeat: no-repeat;
     display: block; content:""; position: fixed; z-index:-1;
@@ -85,6 +87,6 @@
 }     
 #diveContainer > div:hover{ 
     opacity:1.0;
-      -webkit-transform: scale(1.1);
-          transform: scale(1.1);
+      -webkit-transform: scale(1.05);
+          transform: scale(1.05);
 }      

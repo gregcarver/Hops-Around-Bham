@@ -1,17 +1,17 @@
-
-<div id="brew-background">
-<!-- Banner -->
-    <div class="col-lg-12">
+<div id="dive-background">
+<div class="Banner">
+    
         <div id="cocktailBanner"></div>
-    </div>
+    
     <div class="cat-title">Cocktail Bars</div>
+</div>
 
     <div ng-controller="BarGetCat">
-        <div id="cocktailContainer">  
-            <div ng-repeat="items in barsCat" id="cocktailInnerContainer" class="cocktailTextStyle">
-                <div class="col-lg-9 cocktail-inner-text center-text">
+        <div id="diveContainer">  
+            <div ng-repeat="items in barsCat" id="diveInnerContainer" class="diveTextStyle">
+                <div class="col-lg-9 dive-inner-text center-text">
                     <div class="col-lg-12" id="innerTextStyle">
-                        {{items.name}}
+                        {{items.name | limitTo:24}}
                     </div>
                     <span class="glyphicon glyphicon-star">Rating:{{items.rating}}</span>
                 <br>
@@ -23,10 +23,11 @@
                 <br>
                 
                 </div>
-                <div id="cocktailImage" class="col-lg-3" ng-click="GetId(items.id)" ng-style="{'background-image':'url({{items.image_url}})'}">
+                <div id="diveImage" class="col-lg-3" ng-click="GetId(items.id)" ng-style="{'background-image':'url({{items.image_url}})'}">
                 </div>
             </div>
                 
         </div>
     </div>
+</div>
 </div>

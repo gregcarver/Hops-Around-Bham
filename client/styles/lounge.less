@@ -12,14 +12,77 @@
     margin-left:10%;
     margin-right:10%;
     float:right;
-    // background-image: url(../images/rustic-wood.jpeg);
-    background-color: black;
 }
 #catImage{
     width:350px;
     height:250px;
     background-size:cover;
     margin:1em;
+}
+#loungeBanner{
+    background-image: url("../images/lounges.jpg");
+    background-size:cover;
+    width:100%;
+    height:400px;
+    margin-bottom: 1em;
+    filter: blur(2px) grayscale(100%);
+}
+
+.cat-title {
+    color: darkred;
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: Pacifico;
+    font-size: 110px;
+}
+
+#loungeContainer{
+    margin-right:5%;
+}
+#loungeInnerContainer{
+    float:right;
+    width:45%;
+    border:1px solid black;
+    background-color:#363431;
+    
+    margin:0.5em;
+}
+.loungeTextStyle{
+    font-size:1.75em;
+    padding:1em;
+    font-family: 'Enriqueta', serif;
+    color:#9d9d9d;
+}
+.lounge-inner-text{
+    float: none;
+    width: 100%;
+    padding-bottom: 15px;
+}
+#loungeImage:hover{
+    cursor: pointer;
+}
+#loungeImage{
+    background-position-y: -120px;
+    margin: 0 auto;
+    height: 20vh;
+    background-size: cover;
+    width: 40vw;
+}
+
+#lounge-background:before { /*sudo class creates layer behind body */
+    background-color: black;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    display: block; content:""; position: fixed; z-index:-1;
+    top:0; left: 0; right: 0; height: 100%;
+    opacity:.8;
+}  
+#innerTextStyle{
+    font-family: Pacifico;
+    color:#8b0000;
+    font-size:1em;
 }
 #loungeBanner{
     background-image: url("../images/lounges.jpg");

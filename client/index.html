@@ -57,7 +57,8 @@
   </div>
 </div>
 <!-- End of navbar -->
-    <ng-view></ng-view>
+  <div class="loader" ng-hide="dataLoaded"></div>
+    <ng-view ng-show="dataLoaded"></ng-view>
 
 
 

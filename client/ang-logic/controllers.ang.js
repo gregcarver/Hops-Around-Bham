@@ -16,11 +16,9 @@ app.controller("loginController", ['$location', '$http', '$scope', "$routeParams
     $http.get('http://localhost:3000/api/favs/user')
         .then(function(response){
             $scope.userList = response.data;
-            console.log($scope.userList);
         })
     $scope.seeUser = function(id){
         $location.path('/user/'+id);
-        console.log(id);
     }
     $scope.LoginPage = function(){
         if(usernameInput.value === 'Cortana' && passwordInput.value !==''){
@@ -38,14 +36,12 @@ app.controller("loginController", ['$location', '$http', '$scope', "$routeParams
 }])
 //get list of bars controller
 app.controller("BarGet",['$scope', '$http','$location','$routeParams',function($scope,$http,$location,$routeParams){
-        console.log('bars load')
             $rootScope.hideNav = false;
         $http({
             method : 'POST',
             url : "http://localhost:3000/api/yelp",
         })
             .then(function(response){
-                console.log(response.data.businesses)
                 $scope.bars=response.data.businesses
     });
 
@@ -53,54 +49,37 @@ app.controller("BarGet",['$scope', '$http','$location','$routeParams',function($
 //get bar by category
 app.controller("BarGetCat",['$scope', '$http','$location','$routeParams', '$rootScope',function($scope,$http,$location,$routeParams,$rootScope){
         $rootScope.hideNav = false;
-        console.log('inside controllerss')
+        $rootScope.dataLoaded = false;
         var id=$routeParams.id;
         var categories = $routeParams.category;
-        console.log($routeParams.category)
             $http({
                 method : 'POST',
                 url : "http://localhost:3000/api/yelp/category/" + categories,
                 data: {}
             })
                 .then(function(response){
-                    console.log(response.data)
-                    $scope.barsCat=response.data.businesses
+                    $scope.barsCat=response.data.businesses;
+                    $rootScope.dataLoaded = true;
         })
         .catch((err) => {
             console.log('err', err);
         })
         $scope.GetId= function(id){
             $location.path("/single/" + id)
-            console.log(id)
-        //     var id=$routeParams.id;
-        //     $http.post('http://localhost:3000/api/yelp/single/'+id)
-        //         .then(function(response){
-        //             console.log('inside post')
-        //         $scope.singleBar=response.data.businesses
-        //         console.log(response)
-        //     })
-        //     .catch((err) => {
-        //     console.log('err', err);
-        // })
         }
 }])
 //single bar
 app.controller("singleBar",['$scope', '$routeParams', '$http','$rootScope', '$location', function($scope, $routeParams, $http,$rootScope,$location){
-    console.log('inside single')
     $rootScope.hideNav = false;
      var id=$routeParams.id;
     $http.post('http://localhost:3000/api/yelp/single/'+id)
         .then(function(response){
-            console.log('inside post')
         $scope.singleBar=response.data
-        // $scope.latitude=response.data.coordinates.latitude
-        // $scope.longitude=reponse.data.coordinates.longitude
-        console.log(response.data)
-            var uluru = {lat: $scope.singleBar.coordinates.latitude, lng: $scope.singleBar.coordinates.longitude};
-    var map = new google.maps.Map(document.getElementById('userMap'), {
-        zoom: 13,
-        center: uluru
-    });
+        var uluru = {lat: $scope.singleBar.coordinates.latitude, lng: $scope.singleBar.coordinates.longitude};
+        var map = new google.maps.Map(document.getElementById('userMap'), {
+            zoom: 13,
+            center: uluru
+        });
             var marker = new google.maps.Marker({
             position: uluru,
             map: map,
@@ -126,7 +105,6 @@ $scope.saveFavorite = function(){
     });
     $http.post('http://localhost:3000/api/favs', data)
     .then(function(response){
-        console.log(response);
         alert('Favorite Saved!');
         $location.path('/user/10');
     });
@@ -134,15 +112,12 @@ $scope.saveFavorite = function(){
 }])
 //User Page controller
 app.controller('oneUserPage', ['$scope', '$http', '$location', '$rootScope', '$routeParams', function($scope, $http, $location, $rootScope, $routeParams){
-    console.log('A user page');
     $rootScope.hideNav = false;
-    console.log($routeParams);
     var id = $routeParams.user;
 
     $http.get('http://localhost:3000/api/favs/user/' +id)
     .then(function(response){
         $scope.favoriteInfo = response.data
-        console.log($scope.favoriteInfo);
         $rootScope.favs = $scope.favoriteInfo;
             // User Map
             //locate
@@ -207,7 +182,6 @@ app.controller('oneUserPage', ['$scope', '$http', '$location', '$rootScope', '$r
                         lat: lat,
                         lng: lng
                     }
-                    console.log(end);
                     var request = {
                     origin: myCenter,
                     destination: end,
@@ -239,17 +213,15 @@ app.controller('oneUserPage', ['$scope', '$http', '$location', '$rootScope', '$r
 
     $http.get('http://localhost:3000/api/favs/user')
     .then(function(response){
-        console.log(response);
+
         response.data.forEach(function(element){
             if(element.id == id){
                $scope.User = element.username;
-               console.log($scope.User);
+
                return $scope.User;
             }else{
-                console.log('no user found');
             }
         })
-        console.log($scope.User);
     })
 
 }])

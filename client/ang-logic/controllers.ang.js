@@ -106,9 +106,6 @@ app.controller("singleBar",['$scope', '$routeParams', '$http','$rootScope', '$lo
             animation: google.maps.Animation.DROP,
             title: "heellllooooo"
         });
-                marker.addListener('click', function() {
-            infowindow.open(userMap, marker);
-        });
     })
             .catch((err) => {
             console.log('err', err);

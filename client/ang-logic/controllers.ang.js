@@ -155,6 +155,7 @@ app.controller('oneUserPage', ['$scope', '$http', '$location', '$rootScope', '$r
             .then(function(response){
                 $rootScope.location = response.data.location;
                 var directionsDisplay;
+                var waypts = [];
                 var directionsService = new google.maps.DirectionsService();
                 var directionMap;
                   directionsDisplay = new google.maps.DirectionsRenderer();
@@ -169,11 +170,16 @@ app.controller('oneUserPage', ['$scope', '$http', '$location', '$rootScope', '$r
                       map: map,
                       animation: google.maps.Animation.DROP
                   })
+
                   $rootScope.favs.forEach(function(element){
                       var uluru = {
                           lat: element.latitude,
                           lng: element.longitude
                       }
+                      waypts.push({
+                        location: uluru,
+                        stopover: true
+                    })
                       var iconImage = '../images/hop.png'
                       var marker = new google.maps.Marker({
                           position: uluru,
@@ -188,6 +194,10 @@ app.controller('oneUserPage', ['$scope', '$http', '$location', '$rootScope', '$r
                       marker.addListener('click', function() {
                           infowindow.open(userMap, marker);
                       });
+                      $rootScope.allEnd = {
+                          lat: element.latitude,
+                          lng: element.longitude
+                      }
                   })
                   
                  
@@ -208,8 +218,23 @@ app.controller('oneUserPage', ['$scope', '$http', '$location', '$rootScope', '$r
                     }
                   });
                 }
+                $scope.calcAllRoute = function() {
+
+                    var request = {
+                    origin: myCenter,
+                    destination: $rootScope.allEnd,
+                    waypoints: waypts,
+                    travelMode: 'DRIVING'
+                  };
+                  directionsService.route(request, function(result, status) {
+                    if (status == 'OK') {
+                      directionsDisplay.setDirections(result);
+                    }
+                  });
+                }
             })
     })
+    
 
     $http.get('http://localhost:3000/api/favs/user')
     .then(function(response){

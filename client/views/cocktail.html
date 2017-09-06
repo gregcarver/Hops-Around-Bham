@@ -1,27 +1,29 @@
-<!-- <div class="Banner"> -->
+<!-- Banner -->
     <div class="col-lg-12">
         <div id="cocktailBanner"></div>
     </div>
-    <div class="cat-title">Cocktails</div>
-<!-- </div> -->
-<div ng-controller="BarGetCat">
-    <div id="categoryContainer">
-    <div ng-repeat="items in barsCat">
-        
-        <div class="col-md-6" id="infoStyle">
-        <div class="col-lg-12">
-            {{items.name}}
-        </div>
-        <div class="col-lg-12">
-                    {{items.phone}}
-        </div>
-        <div class="col-lg-12">
+    <div class="cat-title">Cocktail Bars</div>
+
+    <div ng-controller="BarGetCat">
+        <div id="cocktailContainer">  
+            <div ng-repeat="items in barsCat" id="cocktailInnerContainer" class="cocktailTextStyle">
+                <div class="col-lg-9 cocktail-inner-text center-text">
+                    <div class="col-lg-12" id="innerTextStyle">
+                        {{items.name}}
+                    </div>
+                    <span class="glyphicon glyphicon-star">Rating:{{items.rating}}</span>
+                <br>
+                    {{items.display_phone}}
+                <br>
                     {{items.location.address1}}
-        </div>
-        </div>
-        <div class="col-lg-6" id="catImage" ng-style="{'background-image':'url({{items.image_url}})'}">
-            <!--<img ng-src="{{items.image_url}}">-->
+                <br>
+                    <span class="glyphicon glyphicon-map-marker"></span> {{items.distance | toMiles | limitTo : 3}} Miles 
+                <br>
+                
+                </div>
+                <div id="cocktailImage" class="col-lg-3" ng-click="GetId(items.id)" ng-style="{'background-image':'url({{items.image_url}})'}">
+                </div>
+            </div>
+                
         </div>
     </div>
-    </div>
-</div>

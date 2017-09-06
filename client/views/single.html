@@ -20,8 +20,27 @@
                 <p class="col-md-12 single-info">{{singleBar.location.display_address[1]}}</p>
                 <br>
                 <p class="col-md-12 single-name">Want to visit this spot?</p>
-                <button class="btn secondary-button" ng-click="saveFavorite(singleBar)">Save to List</button>
-                
+<!--Bootstrap alert button-->
+  <!-- Trigger the modal with a button -->
+  <button type="button" class="btn button-secondary btn-lg" id="single-page-button" data-toggle="modal" data-target="#myModal">Save to List</button>
+
+  <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+        <div class="modal-body">
+          <p>Favorite Saved!</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+<!-- End alert -->
              </div> 
                 <div class="col-md-5" id="catImage" ng-style="{'background-image':'url({{singleBar.image_url}})'}"></div> 
     </div>

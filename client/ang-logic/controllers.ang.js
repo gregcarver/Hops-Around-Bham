@@ -71,9 +71,11 @@ app.controller("BarGetCat",['$scope', '$http','$location','$routeParams', '$root
 //single bar
 app.controller("singleBar",['$scope', '$routeParams', '$http','$rootScope', '$location', function($scope, $routeParams, $http,$rootScope,$location){
     $rootScope.hideNav = false;
+    $rootScope.dataLoaded = false;
      var id=$routeParams.id;
     $http.post('http://localhost:3000/api/yelp/single/'+id)
         .then(function(response){
+        $rootScope.dataLoaded = true;
         $scope.singleBar=response.data
         var uluru = {lat: $scope.singleBar.coordinates.latitude, lng: $scope.singleBar.coordinates.longitude};
         var map = new google.maps.Map(document.getElementById('userMap'), {
@@ -91,6 +93,7 @@ app.controller("singleBar",['$scope', '$routeParams', '$http','$rootScope', '$lo
             console.log('err', err);
         })
 $scope.saveFavorite = function(){
+    console.log("im clickin here");
     var data = ({
             id : "10",
             name : $scope.singleBar.name,
@@ -104,11 +107,10 @@ $scope.saveFavorite = function(){
             rating : $scope.singleBar.rating
     });
     $http.post('http://localhost:3000/api/favs', data)
-    .then(function(response){
-        alert('Favorite Saved!');
+    };
+    $scope.clicked = function(){   
         $location.path('/user/10');
-    });
-};
+    }
 }])
 //User Page controller
 app.controller('oneUserPage', ['$scope', '$http', '$location', '$rootScope', '$routeParams', function($scope, $http, $location, $rootScope, $routeParams){
@@ -118,6 +120,7 @@ app.controller('oneUserPage', ['$scope', '$http', '$location', '$rootScope', '$r
     $http.get('http://localhost:3000/api/favs/user/' +id)
     .then(function(response){
         $scope.favoriteInfo = response.data
+        console.log($scope.favoriteInfo);
         $rootScope.favs = $scope.favoriteInfo;
             // User Map
             //locate

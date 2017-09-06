@@ -1,8 +1,6 @@
 <div id="single-background">
-
-    <div class="Banner">
-        
-            <div id="singleBanner"></div>
+  <div class="Banner">
+    <div id="singleBanner"></div>
         
 
 <div ng-controller="singleBar" class="move-down">
@@ -20,9 +18,9 @@
                 <p class="col-md-12 single-info">{{singleBar.location.display_address[1]}}</p>
                 <br>
                 <p class="col-md-12 single-name">Want to visit this spot?</p>
-<!--Bootstrap alert button-->
+  <!--Bootstrap alert button-->
   <!-- Trigger the modal with a button -->
-  <button type="button" class="btn button-secondary btn-lg" id="single-page-button" data-toggle="modal" data-target="#myModal">Save to List</button>
+  <button type="button" class="btn button-secondary btn-lg" id="single-page-button" data-toggle="modal" data-target="#myModal" ng-click="saveFavorite()">Save to List</button>
 
   <!-- Modal -->
   <div class="modal fade" id="myModal" role="dialog">
@@ -35,12 +33,12 @@
           <p>Favorite Saved!</p>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clicked()">Close</button>
         </div>
       </div>
     </div>
   </div>
-<!-- End alert -->
+  <!-- End alert -->
              </div> 
                 <div class="col-md-5" id="catImage" ng-style="{'background-image':'url({{singleBar.image_url}})'}"></div> 
     </div>
@@ -48,6 +46,7 @@
         <div id="userMap" style="width:100%;height:400px">
     </div>
            
+  </div>
 </div>
 
 

@@ -75,7 +75,24 @@ app.filter('toMiles',function() {
 		
 	
 })
+// function chg()
+// {
+//   document.getElementById("diveInnerContainer").style.width="50%";
+//   document.getElementById("diveInnerContainer").style.height="300px";
+// }
 
+// function chg2()
+// {
+//   document.getElementById("diveInnerContainer").style.width="45%";
+//   document.getElementById("diveInnerContainer").style.height="100%";
+// }
+// $('#diveContainer').hover(function() {
+//     console.log('imbeing touched')
+//     $('#diveContainer').css({opacity: '0.7'});
+//     $(this).css({opacity: '1'});
+// }, function() {
+//     $('#diveContainer').css({opacity: '1'})}
+// );
 
 
 

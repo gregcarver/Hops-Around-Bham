@@ -4,13 +4,13 @@
     </div>
     <div class="col-lg-6 left-container">
         <div class="row">
-            <h3 class="col-lg-12 center-text">Bars to check out:</h3>
+            <h2 class="col-lg-12 center-text">Bars to check out:</h2>
         </div>
         <div class="fav-list">
             <div ng-repeat="favorites in favoriteInfo">
                 <div class="fav-list-text"> 
                     <a ng-href="/#/single/{{favorites.locationID}}">
-                        <h5 class="col-md-12">{{favorites.name}}</h5>
+                        <p class="col-md-12 single-name">{{favorites.name}}</p>
                     </a>
                     <p class="col-md-12">Phone #: {{favorites.display_phone}}</p>
                     <p class="col-md-12">Address: {{favorites.address}}</p>

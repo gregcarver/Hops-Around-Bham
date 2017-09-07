@@ -86,7 +86,7 @@ app.controller("singleBar",['$scope', '$routeParams', '$http','$rootScope', '$lo
 $scope.saveFavorite = function(){
     //console.log("im clickin here");
     var data = ({
-            id : "4",
+            id : "10",
             name : $scope.singleBar.name,
             locationID : $scope.singleBar.id,
             image_url : $scope.singleBar.image_url,

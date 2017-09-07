@@ -2,7 +2,7 @@ var app = angular.module('app.controllers', ['ngRoute']);
 
 app.controller('homeController', ["$rootScope", function($rootScope){
     $rootScope.hideNav = true;
-    $rootScope.dataLoaded = false;
+    $rootScope.dataLoaded = true;
 }])
 
 app.controller('landingController', ["$rootScope", function($rootScope){

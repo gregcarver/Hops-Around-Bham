@@ -2,6 +2,7 @@ var app = angular.module('app.controllers', ['ngRoute']);
 
 app.controller('homeController', ["$rootScope", function($rootScope){
     $rootScope.hideNav = true;
+    $rootScope.dataLoaded = false;
 }])
 
 app.controller('landingController', ["$rootScope", function($rootScope){
@@ -34,18 +35,7 @@ app.controller("loginController", ['$location', '$http', '$scope', "$routeParams
         passwordInput.value = "";
     }
 }])
-//get list of bars controller
-app.controller("BarGet",['$scope', '$http','$location','$routeParams',function($scope,$http,$location,$routeParams){
-            $rootScope.hideNav = false;
-        $http({
-            method : 'POST',
-            url : "http://localhost:3000/api/yelp",
-        })
-            .then(function(response){
-                $scope.bars=response.data.businesses
-    });
 
-}])
 //get bar by category
 app.controller("BarGetCat",['$scope', '$http','$location','$routeParams', '$rootScope',function($scope,$http,$location,$routeParams,$rootScope){
         $rootScope.hideNav = false;

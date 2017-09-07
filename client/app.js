@@ -88,7 +88,7 @@ app.filter('toMiles',function() {
 //   document.getElementById("diveInnerContainer").style.height="100%";
 // }
 // $('#diveContainer').hover(function() {
-//     console.log('imbeing touched')
+//     //console.log('imbeing touched')
 //     $('#diveContainer').css({opacity: '0.7'});
 //     $(this).css({opacity: '1'});
 // }, function() {

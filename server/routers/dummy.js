@@ -1,6 +1,6 @@
 $http.get('http://localhost:3000/api/favs/user')
     .then(function(response){
-        console.log(response);
+        //console.log(response);
         response.data.forEach(function(element){
             if(element.id === id){
                $scope.User = element.username 
@@ -23,7 +23,7 @@ $scope.saveFavorite = function(){
     });
     $http.post('http://localhost:3000/api/favs', data)
     .then(function(response){
-        console.log(response);
+        //console.log(response);
         alert('Favorite Saved!');
     });
 };

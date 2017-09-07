@@ -7,12 +7,12 @@ var usersHandler = require('./users.proc');
 
 ROUTER
   .get('/', function(req, res) {
-      console.log('inside get for favs');
+      //console.log('inside get for favs');
         res.sendFile(jsonPath);
     })
     .post('/', function(req, res) {
-        console.log("posting a fav");
-        console.log(req.body);
+        //console.log("posting a fav");
+        //console.log(req.body);
         fs.readFile(jsonPath, 'utf-8', function(err, file){
             if (err) {
                 res.status(500);
@@ -31,28 +31,40 @@ ROUTER
         });
     })
     .get('/user', function(req, res){
-        console.log('inside get all users');
+        //console.log('inside get all users');
         usersHandler.all()
             .then(function (success){
                 res.send(success);
             }, function(err){
-                console.log(err);
+                //console.log(err);
                 res.sendStatus(500);
             });
     })
     .get('/user/:id', function(req, res){
-        console.log('hello here are my favs');
-        console.log(req.params.id);
+        //console.log('hello here are my favs');
+        //console.log(req.params.id);
         usersHandler.userFav(req.params.id)
             .then(function(success){
                 res.send(success);
-                console.log('we did it on favs');
+                //console.log('we did it on favs');
             }, function(err){
-                console.log(err);
-                console.log('we failed at favs');
+                //console.log(err);
+                //console.log('we failed at favs');
                 res.sendStatus(500);
             })
 
+    })
+    .delete('/one/:locationID', function(req, res){
+        //console.log('Delete the things');
+        console.log('controlls id', req.params.locationID);
+        usersHandler.destroy(req.params.locationID)
+            .then(function(success){
+                res.send(success);
+            }, function(err){
+                //console.log(err);
+                //console.log('delete controller');
+                res.sendStatus(500);               
+            })
     })
 
 

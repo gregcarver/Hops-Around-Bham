@@ -14,7 +14,7 @@ ROUTER
     next();
   })
   .post("/",function(req,res){
-   console.log(req.yelpClient);
+   //console.log(req.yelpClient);
     
     let body = req.body;
     
@@ -29,9 +29,9 @@ ROUTER
   
   //get by category
   .post("/category/:category",function(req,res){
-  console.log(req.yelpClient);
+  //console.log(req.yelpClient);
   var params = req.params
-  console.log(params.category)
+  //console.log(params.category)
   let body = req.body;
   
   req.yelpClient.search({
@@ -44,7 +44,7 @@ ROUTER
   })
 })
   .post("/single/:id",function(req,res){
-  console.log(req.yelpClient);
+  //console.log(req.yelpClient);
   var params = req.params
   let body = req.body;
   var stringed = params.id.toString()

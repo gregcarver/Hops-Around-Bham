@@ -6,13 +6,13 @@ var favPath = path.join(__dirname, "..", 'data.json');
 
 
 function getUsers() {
-    console.log('in my promise');
+    //console.log('in my promise');
     return new Promise(function(resolve, reject) {
         fs.readFile(jsonPath, 'utf-8', function(err, file) {
             if (err) {
                 reject('Error reading users.json');
             }
-            console.log(file);
+            //console.log(file);
             resolve(JSON.parse(file));
         });
     });
@@ -49,7 +49,7 @@ function getUserFav(id) {
             if (err) {
                 reject('Error reading data.json');
             }
-            console.log('one user favs promise');
+            //console.log('one user favs promise');
             var parsed = JSON.parse(file),
                 usersFavs = parsed.filter(function(element){
                 if(element.id === id){
@@ -60,9 +60,42 @@ function getUserFav(id) {
             });
             if (true){
                resolve(usersFavs);
-               console.log(usersFavs);
-            } else{
-                reject('Not Found');
+               //console.log(usersFavs);
+            } 
+        });
+    });
+}
+
+function deleteFav(locationID) {
+    return new Promise(function(resolve, reject) {
+        fs.readFile(favPath, 'utf-8', function(err, file) {
+            if (err) {
+                reject('Error reading data.json');
+            }
+
+            var parsed = JSON.parse(file),
+                isDeleted = false,
+                deleteIndex;
+
+            parsed.forEach(function(element, i) {
+                if (element.locationID === locationID) {
+                    isDeleted = true;
+                    deleteIndex = i;
+                }
+            });
+
+            if (isDeleted) {
+                parsed.splice(deleteIndex, 1);
+
+                fs.writeFile(favPath, JSON.stringify(parsed), function(err) {
+                    if (err) {
+                        reject('Error writing to data.json');
+                    }
+
+                    resolve('Deleted');
+                });
+            } else {
+                reject('cannot do');
             }
         });
     });
@@ -71,5 +104,6 @@ function getUserFav(id) {
 module.exports = {
     all: getUsers,
     oneUser: getUser,
-    userFav: getUserFav
+    userFav: getUserFav,
+    destroy: deleteFav
 };

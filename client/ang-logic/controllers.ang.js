@@ -62,7 +62,7 @@ app.controller("BarGetCat",['$scope', '$http','$location','$routeParams', '$root
                     $rootScope.dataLoaded = true;
         })
         .catch((err) => {
-            console.log('err', err);
+            //console.log('err', err);
         })
         $scope.GetId= function(id){
             $location.path("/single/" + id)
@@ -90,10 +90,10 @@ app.controller("singleBar",['$scope', '$routeParams', '$http','$rootScope', '$lo
         });
     })
             .catch((err) => {
-            console.log('err', err);
+            //console.log('err', err);
         })
 $scope.saveFavorite = function(){
-    console.log("im clickin here");
+    //console.log("im clickin here");
     var data = ({
             id : "10",
             name : $scope.singleBar.name,
@@ -115,13 +115,32 @@ $scope.saveFavorite = function(){
 //User Page controller
 app.controller('oneUserPage', ['$scope', '$http', '$location', '$rootScope', '$routeParams', function($scope, $http, $location, $rootScope, $routeParams){
     $rootScope.hideNav = false;
+    $rootScope.dataLoaded = true;
     var id = $routeParams.user;
 
     $http.get('http://localhost:3000/api/favs/user/' +id)
     .then(function(response){
         $scope.favoriteInfo = response.data
-        console.log($scope.favoriteInfo);
+        //console.log($scope.favoriteInfo);
         $rootScope.favs = $scope.favoriteInfo;
+
+        $scope.deleteFav = function(index, locationID){
+            $rootScope.favs = $rootScope.favs.splice(index, 1);
+            // //console.log($rootScope.favs);
+            //console.log('inside delete');
+            $http.delete('http://localhost:3000/api/favs/one/' +locationID)
+            .then(function(response){
+                //console.log('success');
+            })
+            .catch((err) => {
+                //console.log(err);
+            })
+            //console.log(locationID);
+        }
+
+
+
+
             // User Map
             //locate
             $http.post('https://www.googleapis.com/geolocation/v1/geolocate?key=AIzaSyBClv-zTbB8Akv7LlKBA38u2VNvaTgqtow',

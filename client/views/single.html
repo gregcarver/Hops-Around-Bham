@@ -1,31 +1,31 @@
 <div id="single-background">
 
     <div class="Banner">
-        
+        <div class="col-lg-12">
             <div id="singleBanner"></div>
-        
-
+        </div>
+    <div class="cat-title">{{singleBar.name}}</div>
+    </div>
 <div ng-controller="singleBar" class="move-down">
     
-         <div class="user row">
-         <h1 class="col-lg-12 cat-title center-text">{{singleBar.name}}</h1>
-    </div> 
+        <div class="user row">
+        <h1 class="col-lg-12 single-text">{{singleBar.name}}</h1>
+    </div>
     <!-- <div class="row">
         <h3 class="col-lg-12 ">Hey let's check out these bars yo.</h3>
     </div> -->
     <div class="col-lg-6 left-container">
         
              <div class="fav-list-text"> 
-                 <h1 class="col-lg-12 single-name">{{singleBar.name}}</h1>
-                <!-- <h5 class="col-md-5 single-name">{{singleBar.name}}</h5> -->
-                <p class="col-md-12" style="color:darkred"><span class="glyphicon glyphicon-star" ></span>Rating: {{singleBar.rating}}</p>
-                <!-- <span>{{singleBar.hours[0].open[0].start}}</span> -<span>{{singleBar.hours[0].open[0].end}}</span> -->
+                <h5 class="col-md-5 single-name">{{singleBar.name}}</h5>
+                <p class="col-md-12"><span class="glyphicon glyphicon-star" style="color:darkred">Rating: {{singleBar.rating}}</span></p>
+                <span>{{singleBar.hours[0].open[0].start}}</span> -<span>{{singleBar.hours[0].open[0].end}}</span>
                 <p class="col-md-12 single-info">Phone #: {{singleBar.display_phone}}</p>
                 <p class="col-md-12 single-info">Address: {{singleBar.location.display_address[0]}}</p>
                 <p class="col-md-12 single-info">{{singleBar.location.display_address[1]}}</p>
                 <br>
                 <p class="col-md-12 single-name">Want to visit this spot?</p>
-                <button class="btn secondary-button" ng-click="saveFavorite(singleBar)">Save to List</button>
+                <button class="single-button" ng-click="saveFavorite(singleBar)">Add to Favs</button>
                 
              </div> 
                 <div class="col-md-5" id="catImage" ng-style="{'background-image':'url({{singleBar.image_url}})'}"></div> 

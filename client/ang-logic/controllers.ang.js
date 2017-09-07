@@ -7,6 +7,7 @@ app.controller('homeController', ["$rootScope", function($rootScope){
 
 app.controller('landingController', ["$rootScope", function($rootScope){
     $rootScope.hideNav = false;
+    $rootScope.dataLoaded = true;
 }])
 
 
